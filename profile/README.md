@@ -1,1 +1,3 @@
-![Metrics](/metrics.organization.svg)
+<picture>
+  <img src="/metrics.organization.svg" alt="Metrics">
+</picture>
