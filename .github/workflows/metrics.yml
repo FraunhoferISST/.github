@@ -20,7 +20,7 @@ jobs:
           user: FraunhoferISST
           token: ${{ secrets.METRICS_TOKEN }}
           config_timezone: Europe/Berlin
-          config_padding: 20
+          config_padding: 200
           config_display: large
           base: header, repositories
           plugin_languages: yes
