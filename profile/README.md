@@ -6,13 +6,10 @@ We identify and realize the strategic value of data by designing and implementin
 </p>
 
 <p align="center">
-  Data Spaces • Data Ecosystems • Digital Twins • Data Management • Digital Itentities • Data Driven Solutions • AI-powered Systems
+  Data Spaces • Data Ecosystems • Digital Twins • Data Management • Digital Identities • Data-Driven Solutions • AI-powered Systems
 </p>
 
 <p align="center">
-  <a href="https://www.isst.fraunhofer.de/en.html">
-    <img src="https://img.shields.io/badge/website-0A4EA1.svg?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Fraunhofer ISST Website" />
-  </a>
   <a href="https://www.linkedin.com/company/fraunhofer-institut-f%C3%BCr-software-und-systemtechnik">
     <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="Fraunhofer ISST on LinkedIn" />
   </a>
@@ -31,7 +28,7 @@ We identify and realize the strategic value of data by designing and implementin
 
 ## 👋 About
 
-Open source powers our mission, accelerating research, fostering collaboration, and enabling data-driven innovation at scale in smart data ecosystems. In this context, Fraunhofer ISST contributes to and collaborates on a wide range of open-source projects across research and industry.
+Open source powers our mission, accelerating research, fostering collaboration, and enabling data-driven innovation at scale in smart data ecosystems. In this context, Fraunhofer ISST contributes to and collaborates on a wide range of open source projects across research and industry.
 
 ## 💻 Projects
 
@@ -44,13 +41,12 @@ We are also happy to contribute to various open source projects, while having co
 - [Eclipse Dataspace Protocol (DSP)](https://github.com/eclipse-dataspace-protocol-base): An [Eclipse project](https://projects.eclipse.org/proposals/eclipse-dataspace-protocol) providing standardized protocols for interoperable data space communication
 - [Eclipse Decentralized Claims Protocol (DCP)](https://github.com/eclipse-dataspace-dcp): An [Eclipse project](https://projects.eclipse.org/projects/technology.dataspace-dcp) providing standardized protocols for conveying organizational identities
 - [Predictive Unit Real-Time Information Service (PURIS)](https://github.com/eclipse-tractusx/puris): A short-term demand and capacity management system, part of the [Eclipse Tractus-X](https://projects.eclipse.org/projects/automotive.tractusx) project
-- [OpenFactoryTwin (OFacT)](https://github.com/OpenFactoryTwin/ofact): Intelligent digital twin solution to link production and logistics data
+- [OpenFactoryTwin (OFacT)](https://github.com/OpenFactoryTwin/ofact): A tool to autogenerate digital twins from company data and enhance decision-making in production and logistics systems
 - [Project Construct-X](https://github.com/project-construct-x/): Various reference implementations for a data space in the construction industry
 
 ## 🤝 Get Involved
 
-If you rely on Open source and are interested in contributing, connect and reach out to us to explore joint research and industry projects:
-- Get involved in our projects  listed above via discussions, issues, and code contributions
-- Visit our [website](https://www.isst.fraunhofer.de/en.html)
+If you rely on open source and are interested in contributing, connect and reach out to us to explore joint research and industry projects:
+- Get involved in our projects listed above via discussions, issues, and code contributions
 - Follow us on [LinkedIn](https://www.linkedin.com/company/fraunhofer-institut-f%C3%BCr-software-und-systemtechnik), [YouTube](https://www.youtube.com/@FraunhoferISST), and [Spotify](https://open.spotify.com/show/3ORSxf9Tpw7z5cCnrqzjh1)
-- [Contact us](https://www.isst.fraunhofer.de/en/address-contact.html)
+- Visit our [website](https://www.isst.fraunhofer.de/en.html) or [contact us directly](https://www.isst.fraunhofer.de/en/address-contact.html)
