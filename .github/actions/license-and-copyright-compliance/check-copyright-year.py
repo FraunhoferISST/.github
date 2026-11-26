@@ -44,7 +44,10 @@ def main(base):
         ["git", "rev-parse", "--verify", "--end-of-options", f"{base}^{{commit}}"],
         text=True,
     ).strip()
-    changed = git_paths("diff", "--name-only", "--diff-filter=ACMRT", "-z", base, "HEAD", "--")
+    changed = git_paths(
+        "diff", "--name-only", "--find-renames=100%", "--diff-filter=ACMT",
+        "-z", base, "HEAD", "--",
+    )
     year = datetime.now(timezone.utc).year
     failed = False
 
