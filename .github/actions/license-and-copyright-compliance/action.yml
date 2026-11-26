@@ -1,22 +1,20 @@
 name: License and Copyright Compliance
-description: Check REUSE metadata, license text consistency, and changed-file copyright years
+description: Run REUSE lint and optionally check license text consistency and changed-file copyright years
 
 inputs:
-  base-sha:
-    description: Base commit for the changed-file copyright year check
-    required: false
   check-copyright-years:
     description: Check changed files for copyright years ending in the current UTC year
-    default: 'true'
+    default: 'false'
+  base-sha:
+    description: Base commit for the changed-file copyright year check
   check-license-text:
     description: Compare license-file and reference-license-file
-    default: 'true'
+    default: 'false'
   license-file:
     description: Repository license file to compare with reference-license-file
-    default: LICENSE
+    default: 'LICENSE'
   reference-license-file:
     description: Repository reference license file to compare with license-file
-    required: false
 
 runs:
   using: composite
@@ -47,6 +45,17 @@ runs:
           exit 1
         fi
 
+    - name: Check REUSE compliance
+      uses: fsfe/reuse-action@v6
+
+    - name: Check copyright years
+      if: inputs.check-copyright-years == 'true'
+      shell: bash
+      env:
+        BASE_SHA: ${{ inputs.base-sha }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: python3 "$ACTION_PATH/check-copyright-year.py" "$BASE_SHA"
+
     - name: Check license text consistency
       if: inputs.check-license-text == 'true'
       shell: bash
@@ -58,14 +67,3 @@ runs:
           echo "::error::The configured license files must exist and be identical."
           exit 1
         fi
-
-    - name: Check REUSE compliance
-      uses: fsfe/reuse-action@v6
-
-    - name: Check copyright years
-      if: inputs.check-copyright-years == 'true'
-      shell: bash
-      env:
-        BASE_SHA: ${{ inputs.base-sha }}
-        ACTION_PATH: ${{ github.action_path }}
-      run: python3 "$ACTION_PATH/check-copyright-year.py" "$BASE_SHA"

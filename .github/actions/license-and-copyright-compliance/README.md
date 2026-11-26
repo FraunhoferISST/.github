@@ -1,6 +1,6 @@
 # License and Copyright Compliance
 
-This composite action runs REUSE lint, optionally checks whether the LICENSE file matches the license file used by REUSE, and checks copyright years in changed files. It operates on the checked-out repository.
+This composite action runs REUSE lint and optionally checks whether the LICENSE file matches the license file used by REUSE and whether changed files have current copyright years. It operates on the checked-out repository.
 
 ```yaml
 name: License and Copyright Compliance
@@ -14,6 +14,8 @@ jobs:
           fetch-depth: 0
       - uses: FraunhoferISST/.github/.github/actions/license-and-copyright-compliance@main
         with:
+          check-copyright-years: true
+          check-license-text: true
           base-sha: ${{ github.event.pull_request.base.sha }}
           license-file: LICENSE
           reference-license-file: LICENSES/LicenseRef-Fraunhofer-License.txt
@@ -24,8 +26,8 @@ jobs:
 | Input | Default | Description |
 | --- | --- | --- |
 | `base-sha` | empty | Base revision to compare directly with `HEAD`; required when the year check is enabled. |
-| `check-copyright-years` | `true` | Set to `false` to skip the year check. |
-| `check-license-text` | `true` | Set to `false` to skip license file comparison. |
+| `check-copyright-years` | `false` | Set to `true` to enable the year check. |
+| `check-license-text` | `false` | Set to `true` to enable license file comparison. |
 | `license-file` | `LICENSE` | First file for the byte-for-byte comparison. |
 | `reference-license-file` | empty | Second file for the comparison; required when the license text check is enabled. |
 
