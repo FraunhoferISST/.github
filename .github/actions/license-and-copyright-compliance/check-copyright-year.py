@@ -45,7 +45,7 @@ def main(base):
         text=True,
     ).strip()
     changed = git_paths(
-        "diff", "--name-only", "--find-renames=100%", "--diff-filter=ACMT",
+        "diff", "--name-only", "--find-renames=100%", "--diff-filter=AMT",
         "-z", base, "HEAD", "--",
     )
     year = datetime.now(timezone.utc).year
