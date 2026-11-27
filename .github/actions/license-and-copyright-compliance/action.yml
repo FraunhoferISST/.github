@@ -1,0 +1,69 @@
+name: License and Copyright Compliance
+description: Run REUSE lint and optionally check license text consistency and changed-file copyright years
+
+inputs:
+  check-copyright-years:
+    description: Check changed files for copyright years ending in the current UTC year
+    default: 'false'
+  base-sha:
+    description: Base commit for the changed-file copyright year check
+  check-license-text:
+    description: Compare license-file and reference-license-file
+    default: 'false'
+  license-file:
+    description: Repository license file to compare with reference-license-file
+    default: 'LICENSE'
+  reference-license-file:
+    description: Repository reference license file to compare with license-file
+
+runs:
+  using: composite
+  steps:
+    - name: Validate inputs
+      shell: bash
+      env:
+        CHECK_YEARS: ${{ inputs.check-copyright-years }}
+        CHECK_LICENSE_TEXT: ${{ inputs.check-license-text }}
+        BASE_SHA: ${{ inputs.base-sha }}
+        LICENSE_FILE: ${{ inputs.license-file }}
+        REFERENCE_LICENSE_FILE: ${{ inputs.reference-license-file }}
+      run: |
+        if [ "$CHECK_YEARS" != 'true' ] && [ "$CHECK_YEARS" != 'false' ]; then
+          echo "::error::check-copyright-years must be 'true' or 'false'"
+          exit 1
+        fi
+        if [ "$CHECK_LICENSE_TEXT" != 'true' ] && [ "$CHECK_LICENSE_TEXT" != 'false' ]; then
+          echo "::error::check-license-text must be 'true' or 'false'"
+          exit 1
+        fi
+        if [ "$CHECK_YEARS" = 'true' ] && [ -z "$BASE_SHA" ]; then
+          echo "::error::base-sha is required when check-copyright-years is true"
+          exit 1
+        fi
+        if [ "$CHECK_LICENSE_TEXT" = 'true' ] && { [ -z "$LICENSE_FILE" ] || [ -z "$REFERENCE_LICENSE_FILE" ]; }; then
+          echo "::error::license-file and reference-license-file are required when check-license-text is true"
+          exit 1
+        fi
+
+    - name: Check REUSE compliance
+      uses: fsfe/reuse-action@v6
+
+    - name: Check copyright years
+      if: inputs.check-copyright-years == 'true'
+      shell: bash
+      env:
+        BASE_SHA: ${{ inputs.base-sha }}
+        ACTION_PATH: ${{ github.action_path }}
+      run: python3 "$ACTION_PATH/check-copyright-year.py" "$BASE_SHA"
+
+    - name: Check license text consistency
+      if: inputs.check-license-text == 'true'
+      shell: bash
+      env:
+        LICENSE_FILE: ${{ inputs.license-file }}
+        REFERENCE_LICENSE_FILE: ${{ inputs.reference-license-file }}
+      run: |
+        if ! cmp -- "$LICENSE_FILE" "$REFERENCE_LICENSE_FILE"; then
+          echo "::error::The configured license files must exist and be identical."
+          exit 1
+        fi
