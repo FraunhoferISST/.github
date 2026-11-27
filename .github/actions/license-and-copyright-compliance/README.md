@@ -18,7 +18,7 @@ jobs:
           check-license-text: true
           base-sha: ${{ github.event.pull_request.base.sha }}
           license-file: LICENSE
-          reference-license-file: LICENSES/Fraunhofer-Gesellschaft.txt
+          reference-license-file: LICENSES/LicenseRef-Fraunhofer-Gesellschaft.txt
 ```
 
 `fetch-depth: 0` ensures the base commit is available. The action needs Git, Python 3 and Docker on a Linux runner. REUSE runs in Docker; the year check uses the runner's Python.
